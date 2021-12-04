@@ -27,16 +27,13 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddCors(
-                c =>
-                {
-                    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-                });
+
+            services.AddControllers();
+            services.AddCors();
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
           options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
           ).AddNewtonsoftJson(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-            services.AddControllers();
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
@@ -48,7 +45,9 @@ namespace WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyOrigin());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:65437", "http://localhost:4200", "http://localhost:52714", "http://localhost:65319", "http://localhost:57880").AllowAnyHeader());
+            app.UseHttpsRedirection();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

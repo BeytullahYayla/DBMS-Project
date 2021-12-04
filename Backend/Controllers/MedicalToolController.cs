@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
         public JsonResult Get()
         {
             string query = @"
-            select * from MedicalTools
+            select * from MedicalTools order by ""ToolID""
 ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
@@ -71,7 +71,7 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpPut("updatemedicaltool")]
+        [HttpPost("updatemedicaltool")]
         public JsonResult Update(MedicalTool medicalTool)
         {
             string query = @"UPDATE medicaltools
@@ -98,7 +98,7 @@ namespace WebAPI.Controllers
             return new JsonResult(Messages.SuccessfullyUpdated);
 
         }
-        [HttpDelete("{medicalToolID}")]
+        [HttpDelete("delete")]
         public JsonResult Delete(int medicalToolID)
         {
             string query = @"Delete from medicaltools
@@ -123,6 +123,31 @@ namespace WebAPI.Controllers
             }
             return new JsonResult(Messages.SuccessfullyDeleted);
         }
+        [HttpGet("getbymedicaltoolid")]
+        public JsonResult GetByMedicalToolID(int medicalToolID)
+        {
+            string query = @"Select* from medicaltools where""ToolID""=@ToolID";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection connection=new NpgsqlConnection(sqlDataSource))
+            {
+                connection.Open();
+                using (NpgsqlCommand command=new NpgsqlCommand(query,connection))
+                {
+                    command.Parameters.AddWithValue("@ToolID", medicalToolID);
+                    myReader = command.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    connection.Close();
+
+                }
+
+            }
+            return new JsonResult(table);
+            
+        }
+       
 
     }
   

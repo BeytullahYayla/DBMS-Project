@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        
+        <th scope="col">ToolID</th>
+        <th scope="col">ToolName</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let medical of medicals">
+          <td>{{medical.ToolID}}</td>
+          <td>{{medical.ToolName}}</td>
+          <td><button class="btn btn-danger" (click)="delete(medical.ToolID)" id="delete">Delete</button></td>
+          <td><button type="button" class="btn btn-warning" routerLink="/medicalTools/update/{{medical.ToolID}}">
+            Update
+          </button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+

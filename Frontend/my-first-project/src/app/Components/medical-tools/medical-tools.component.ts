@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MedicalTool } from 'src/app/Models/medicalTool';
+
 
 import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
 
@@ -13,25 +16,35 @@ import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
 export class MedicalToolsComponent implements OnInit {
 
   medicals:MedicalTool[]=[];
- selam="ben beyt"
-  constructor(private httpClient:HttpClient,private medicalToolService:MedicalToolsService) { }
+
+ 
+  constructor(private httpClient:HttpClient,
+    private medicalToolService:MedicalToolsService,
+    private formBuilder:FormBuilder,
+    
+    
+    ) { }
  
   ngOnInit(): void {
     this.getAll()
     
   }
 
-  // getAll(){
-  //   this.medicalToolService.getMedicalTools().subscribe(
-  //     response=>{
-  //       this.medicals=response
-  //     }
-  //   )
-  // }
   getAll(){
-    this.httpClient.get<MedicalTool[]>('http://localhost:43082/api/MedicalTool/getall').subscribe(response=>{
-      this.medicals=response
-    });
+    this.medicalToolService.getMedicalTools().subscribe(
+      response=>{
+        this.medicals=response
+      }
+    )
   }
+  delete(medicalToolID:number){
+    this.medicalToolService.delete(medicalToolID).subscribe(
+
+    )
+   
+  }
+ 
+ 
+ 
 
 }

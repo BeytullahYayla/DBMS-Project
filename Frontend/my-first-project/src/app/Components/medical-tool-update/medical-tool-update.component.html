@@ -1,0 +1,51 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h5 class="title">Update MedicalTool</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="medicalToolUpdateForm">
+                   <div *ngFor="let item of medicalTool">
+                   
+                    
+                    <div class="mb-3">
+                      <div class="form-group">
+                          <label for="ToolID">Tool ID</label>
+                          <input  type="number"  id="ToolID" formControlName="ToolID" class="form-control" placeholder="{{item.ToolID}}">
+                          
+                      </div>
+  
+                  </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="ToolName">Tool Name</label>
+                            <input  type="text"  id="ToolName" formControlName="ToolName" class="form-control" placeholder="{{item.ToolName}}">
+                            
+                        </div>
+  
+                    </div>
+                  </div> 
+                  
+                   
+                  
+                   
+                    
+                   
+                    
+                    
+                  
+                    
+                  
+                  
+                    
+        
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success btn-fill" (click)="update()">Update</button>
+            </div>
+        </div>
+       
+    </div>
+  </div>
