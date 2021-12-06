@@ -9,7 +9,7 @@ namespace WebAPI.Models
     {
         public int PatientID { get; set; }
         public int PatientCategoryID { get; set; }
-        public int ExaminationID { get; set; }
+  
         public int VeterinerianID { get; set; }
         public int PetOwnerID { get; set; }
         public int DiagnosisID { get; set; }

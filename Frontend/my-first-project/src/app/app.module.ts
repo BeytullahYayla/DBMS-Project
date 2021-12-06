@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MedicalToolUpdateComponent } from './Components/medical-tool-update/medical-tool-update.component'
 import { AppRoutingModule } from './app-routing.module';
 import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-tool-add.component';
+import { PatientComponent } from './Components/patient/patient.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-t
     MedicalToolsComponent,
     NavComponent,
     MedicalToolUpdateComponent,
-    MedicalToolAddComponent
+    MedicalToolAddComponent,
+    PatientComponent
     
   ],
   imports: [
