@@ -21,7 +21,7 @@ export class MedicalToolsService {
   }
   delete(medicalToolID:number){
     let newPath=this.apiUrl+"MedicalTool/delete?medicalToolID="+medicalToolID
-    return this.httpClient.delete(newPath)
+    return this.httpClient.post(newPath,medicalToolID)
   }
   update(medicalTool:MedicalTool){
     let newPath="http://localhost:43082/api/MedicalTool/updatemedicaltool"

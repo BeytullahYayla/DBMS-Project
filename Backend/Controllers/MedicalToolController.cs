@@ -98,7 +98,7 @@ namespace WebAPI.Controllers
             return new JsonResult(Messages.SuccessfullyUpdated);
 
         }
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public JsonResult Delete(int medicalToolID)
         {
             string query = @"Delete from medicaltools

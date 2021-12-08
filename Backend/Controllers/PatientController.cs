@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using WebAPI.Constants;
 using WebAPI.Models;
 
+
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -24,17 +25,7 @@ namespace WebAPI.Controllers
         [HttpGet("getpatientdetails")]
         public JsonResult Get()
         {
-            string query = @"select ""PatientName"",""PatientAge"",""PatientCategoryName"",""PetOwnerName"",""PetOwnerSurname"",""VeterinerianName"",""DiagnosisName"" from patients
-inner join petowners
-on  ""patients"".""PetOwnerID"" = ""petowners"".""PetOwnerID""
-inner join patientcategories
-on ""patients"".""PatientCategoryID"" = ""patientcategories"".""PatientCategoryID""
-inner join veterinerians
-on ""patients"".""VeterinerianID"" = ""veterinerians"".""VeterinerianID""
-inner join diagnoses
-on ""patients"".""DiagnosisID"" = ""diagnoses"".""DiagnosisID""
-
-";
+            string query = @"select * from getpatientdetails()";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
             NpgsqlDataReader myReader;
@@ -54,7 +45,7 @@ on ""patients"".""DiagnosisID"" = ""diagnoses"".""DiagnosisID""
         [HttpGet("getbypatientid")]
         public JsonResult GetByPatientID(int patientID)
         {
-            string query = @"Select* from patients where""PatientID""=@PatientID";
+            string query = @"select * from getpatientbypatientid(@PatientID)";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
             NpgsqlDataReader myReader;
