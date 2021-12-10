@@ -12,6 +12,7 @@ import { MedicalToolUpdateComponent } from './Components/medical-tool-update/med
 import { AppRoutingModule } from './app-routing.module';
 import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-tool-add.component';
 import { PatientComponent } from './Components/patient/patient.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -30,7 +31,16 @@ import { PatientComponent } from './Components/patient/patient.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:1000,
+      progressBar:true,
+      progressAnimation:'increasing',
+      preventDuplicates:true,
+      positionClass:"bottom"
+    }
+    )
     
     
     

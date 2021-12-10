@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
@@ -18,9 +19,11 @@ namespace WebAPI.Controllers
     public class PatientController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public PatientController(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public PatientController(IConfiguration configuration,IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
         }
         [HttpGet("getpatientdetails")]
         public JsonResult Get()
@@ -99,7 +102,7 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public JsonResult Delete(int patientID)
         {
             string query = @"Delete from patients
@@ -155,6 +158,7 @@ namespace WebAPI.Controllers
             return new JsonResult(Messages.SuccessfullyUpdated);
 
         }
+        
 
 
     }

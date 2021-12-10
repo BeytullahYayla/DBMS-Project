@@ -10,6 +10,6 @@ namespace WebAPI.Models
         public int TreatmentID { get; set; }
         public int MedicineID { get; set; }
         public string TreatmentName { get; set; }
-        public double TreatmentFee { get; set; }
+        
     }
 }

@@ -9,8 +9,8 @@ const routes: Routes = [
     {path:"",pathMatch:"full",component:MedicalToolsComponent},
     {path:"medicalTools",pathMatch:"full",component:MedicalToolsComponent},
     {path:"medicalTools/update/:medicalToolID",pathMatch:"full",component:MedicalToolUpdateComponent},
-    {path:"medicalTools/add",pathMatch:"full",component:MedicalToolAddComponent}
- 
+    {path:"medicalTools/add",pathMatch:"full",component:MedicalToolAddComponent},
+    {path:"refresh",component:MedicalToolsComponent}
 ];
 
 

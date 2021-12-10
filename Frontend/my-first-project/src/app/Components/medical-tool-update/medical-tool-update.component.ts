@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MedicalTool } from 'src/app/Models/medicalTool';
 import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
 
@@ -15,7 +16,8 @@ export class MedicalToolUpdateComponent implements OnInit {
   medicalTool:MedicalTool[]
   constructor(private medicalToolService:MedicalToolsService,
     private formBuilder:FormBuilder,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService
      
     ) { }
 
@@ -38,7 +40,8 @@ export class MedicalToolUpdateComponent implements OnInit {
     if (this.medicalToolUpdateForm.valid) {
           this.medicalToolService.update(medicalToolModel).subscribe(
             response=>{
-             
+
+             this.toastrService.success("Medical Tool Successfully Updated")
 
             }
             
@@ -46,7 +49,7 @@ export class MedicalToolUpdateComponent implements OnInit {
           )  
     }
     else{
-      console.log("Form Eksik")
+      this.toastrService.error("Some errors occured")
       
     }
     

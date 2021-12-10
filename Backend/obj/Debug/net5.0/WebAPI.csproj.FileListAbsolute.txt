@@ -68,3 +68,4 @@ E:\DBMS-Project\Backend\obj\Debug\net5.0\WebAPI.dll
 E:\DBMS-Project\Backend\obj\Debug\net5.0\ref\WebAPI.dll
 E:\DBMS-Project\Backend\obj\Debug\net5.0\WebAPI.pdb
 E:\DBMS-Project\Backend\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
+E:\DBMS-Project\Backend\bin\Debug\net5.0\libman.json

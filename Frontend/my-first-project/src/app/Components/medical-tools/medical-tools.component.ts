@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { MedicalTool } from 'src/app/Models/medicalTool';
+import { Location } from '@angular/common';
 
 
 import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
@@ -21,6 +23,9 @@ export class MedicalToolsComponent implements OnInit {
   constructor(private httpClient:HttpClient,
     private medicalToolService:MedicalToolsService,
     private formBuilder:FormBuilder,
+    private toastrService:ToastrService,
+    private router:Router,
+    private location:Location
     
     
     ) { }
@@ -39,7 +44,16 @@ export class MedicalToolsComponent implements OnInit {
   }
   delete(medicalToolID:number){
     this.medicalToolService.delete(medicalToolID).subscribe(
+      response=>{
+        this.toastrService.success("Medical Tool Successfully Deleted");
+        this.router.navigateByUrl("/refresh",{skipLocationChange:true}).then(()=>{
+          this.router.navigate([decodeURI(this.location.path())])
+        })
 
+       
+        
+      }
+        
     )
    
   }

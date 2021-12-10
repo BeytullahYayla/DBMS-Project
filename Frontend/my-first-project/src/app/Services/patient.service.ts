@@ -15,4 +15,8 @@ export class PatientService {
     let newPath=this.apiUrl+"Patient/getpatientdetails"
     return this.httpClient.get<Patient[]>(newPath)
   }
+  deletePatient(patientID:number){
+    let newPath=this.apiUrl+"Patient/delete"
+    return this.httpClient.post(newPath,patientID)
+  }
 }
