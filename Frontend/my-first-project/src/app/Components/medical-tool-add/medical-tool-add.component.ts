@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MedicalTool } from 'src/app/Models/medicalTool';
 import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-medical-tool-add',
@@ -13,7 +16,10 @@ export class MedicalToolAddComponent implements OnInit {
   addMedicalToolForm:FormGroup
 
   constructor(private formBuilder:FormBuilder,
-    private medicalToolService:MedicalToolsService
+    private medicalToolService:MedicalToolsService,
+    private toastrService:ToastrService,
+    private router:Router,
+    private location:Location
     ) { }
 
   ngOnInit(): void {
@@ -35,7 +41,10 @@ export class MedicalToolAddComponent implements OnInit {
     if (this.addMedicalToolForm.valid) {
           this.medicalToolService.add(medicalToolModel).subscribe(
             response=>{
-              console.log("Ekleme Basarili")
+              this.toastrService.success("Medical Tool Added Successfully")
+              this.router.navigateByUrl("/refresh",{skipLocationChange:true}).then(()=>{
+                this.router.navigate(["medicalTools"])
+              })
              
 
             }
@@ -44,7 +53,7 @@ export class MedicalToolAddComponent implements OnInit {
           )  
     }
     else{
-      console.log("Form Eksik")
+      this.toastrService.error("Form is missing")
       
     }
     

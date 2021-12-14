@@ -1,0 +1,54 @@
+
+<div class="row">
+  <div
+    class="col-lg-4 col-md-6 shadow-lg p-3 mb-5 rounded"
+    *ngFor="let patient of patients"
+  >
+      <div class="card border-0 mb-3" style="width: 18rem">
+      <!-- <img
+        class="car-image"
+        routerLink="/cars/car-detail/{{ car.carID }}"
+        src="{{ imgUrl }}{{ car.carImages }}"
+        class="card-img-top"
+        alt="Image"
+        role="button"
+        width="200"
+        height="200"
+      /> -->
+      <div class="card-body text-center">
+        <h4>
+          <a
+           
+            class="card-title text-decoration-none h5"
+            style="color: #007bff"
+            >{{ patient.PatientName }}
+          </a>
+        </h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        
+        <li class="list-group-item">
+          <span class="float-start">Patient Age</span>
+          <span class="float-end">{{ patient.PatientAge }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="float-start">Patient Category</span>
+          <span class="float-end">{{ patient.PatientCategoryName }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="float-start">PetOwnerName</span>
+          <span class="float-end">{{ patient.PetOwnerName }}</span>
+        </li>
+      
+      </ul>
+      <div class="card-body">
+        <div class="d-flex action justify-content-between">
+          <!-- <a type="button" (click)="addToCart(car)" class="btn btn-success">Sepete Ekle</a> -->
+          <!-- Button trigger modal -->
+  
+          <a class="btn btn-primary w-100">Detaylar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

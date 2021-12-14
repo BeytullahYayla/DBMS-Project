@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Patient } from 'src/app/Models/patient';
+import { PatientDetail } from 'src/app/Models/patientDetail';
 import { PatientService } from 'src/app/Services/patient.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { PatientService } from 'src/app/Services/patient.service';
 })
 export class PatientComponent implements OnInit {
 
-  patients:Patient[]
+  patients:PatientDetail[]
   constructor(private patientService:PatientService,private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
 
 
@@ -28,9 +29,16 @@ export class PatientComponent implements OnInit {
   deletePatient(patientID:number){
     this.patientService.deletePatient(patientID).subscribe(
       response=>{
-        this.toastrService.success("Patient SuccessfullyDeleted")
+        this.toastrService.success("Patient Successfully Deleted")
         
 
+      }
+    )
+  }
+  update(patient:Patient){
+    this.patientService.update(patient).subscribe(
+      response=>{
+        this.toastrService.success("Patient Updated Successfully");
       }
     )
   }

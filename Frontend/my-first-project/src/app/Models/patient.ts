@@ -1,9 +1,10 @@
 export interface Patient{
-    PatientName:string;
-    PatientAge:number;
-    PatientcategoryName:string;
-    PetOwnerName:string;
-    PetOwnerSurname:string;
-    VeterinerianName:string;
-    DiagnosisName:string;
+    PatientID:number
+    PatientCategoryID:number
+    VeterinerianID:number
+    PetOwnerID:number
+    DiagnosisID:number
+    PatientRoomID:number
+    PatientName:number
+    PatientAge:number
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MedicalTool } from 'src/app/Models/medicalTool';
 import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-medical-tool-update',
   templateUrl: './medical-tool-update.component.html',
@@ -17,7 +17,9 @@ export class MedicalToolUpdateComponent implements OnInit {
   constructor(private medicalToolService:MedicalToolsService,
     private formBuilder:FormBuilder,
     private activatedRoute:ActivatedRoute,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private router:Router,
+    private location:Location
      
     ) { }
 
@@ -42,6 +44,10 @@ export class MedicalToolUpdateComponent implements OnInit {
             response=>{
 
              this.toastrService.success("Medical Tool Successfully Updated")
+             this.router.navigateByUrl("/refresh",{skipLocationChange:true}).then(()=>{
+              
+              this.router.navigate(["medicalTools"])
+            })
 
             }
             
@@ -49,7 +55,7 @@ export class MedicalToolUpdateComponent implements OnInit {
           )  
     }
     else{
-      this.toastrService.error("Some errors occured")
+      this.toastrService.error("Something went wrong")
       
     }
     

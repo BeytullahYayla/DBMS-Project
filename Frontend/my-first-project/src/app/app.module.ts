@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-tool-add.component';
 import { PatientComponent } from './Components/patient/patient.component';
 import { ToastrModule } from 'ngx-toastr';
+import{SidebarComponent} from './Components/sidebar/sidebar.component';
+import { PatientAddComponent } from './Components/patient-add/patient-add.component'
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ToastrModule } from 'ngx-toastr';
     NavComponent,
     MedicalToolUpdateComponent,
     MedicalToolAddComponent,
-    PatientComponent
+    PatientComponent,
+    SidebarComponent,
+    PatientAddComponent
     
   ],
   imports: [
@@ -34,11 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:1000,
-      progressBar:true,
-      progressAnimation:'increasing',
-      preventDuplicates:true,
-      positionClass:"bottom"
+    
+      positionClass:"toast-bottom-right"
     }
     )
     

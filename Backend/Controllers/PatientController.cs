@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         [HttpGet("getpatientdetails")]
         public JsonResult Get()
         {
-            string query = @"select * from getpatientdetails()";
+            string query = @"select * from patientdto";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
             NpgsqlDataReader myReader;
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
             return new JsonResult(table);
 
         }
-        [HttpPost]
+        [HttpPost("addpatient")]
         public JsonResult Post(Patient patient)
         {
 

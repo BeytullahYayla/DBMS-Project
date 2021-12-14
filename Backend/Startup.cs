@@ -37,12 +37,12 @@ namespace WebAPI
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
           options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
           ).AddNewtonsoftJson(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
-          
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +51,7 @@ namespace WebAPI
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:65437", "http://localhost:4200", "http://localhost:52714", "http://localhost:65319", "http://localhost:57880").AllowAnyHeader());
             app.UseHttpsRedirection();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,7 +67,7 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
-           
+
         }
     }
 }
