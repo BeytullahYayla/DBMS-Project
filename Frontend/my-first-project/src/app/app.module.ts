@@ -14,7 +14,8 @@ import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-t
 import { PatientComponent } from './Components/patient/patient.component';
 import { ToastrModule } from 'ngx-toastr';
 import{SidebarComponent} from './Components/sidebar/sidebar.component';
-import { PatientAddComponent } from './Components/patient-add/patient-add.component'
+import { PatientAddComponent } from './Components/patient-add/patient-add.component';
+import { PatientUpdateComponent } from './Components/patient-update/patient-update.component'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PatientAddComponent } from './Components/patient-add/patient-add.compon
     MedicalToolAddComponent,
     PatientComponent,
     SidebarComponent,
-    PatientAddComponent
+    PatientAddComponent,
+    PatientUpdateComponent
     
   ],
   imports: [

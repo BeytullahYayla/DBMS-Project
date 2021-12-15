@@ -4,6 +4,7 @@ import { MedicalToolAddComponent } from './Components/medical-tool-add/medical-t
 import { MedicalToolUpdateComponent } from './Components/medical-tool-update/medical-tool-update.component';
 import { MedicalToolsComponent } from './Components/medical-tools/medical-tools.component';
 import { PatientAddComponent } from './Components/patient-add/patient-add.component';
+import { PatientUpdateComponent } from './Components/patient-update/patient-update.component';
 import { PatientComponent } from './Components/patient/patient.component';
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
     {path:"medicalTools/add",pathMatch:"full",component:MedicalToolAddComponent},
     {path:"refresh",component:MedicalToolsComponent},
     {path:"patients",pathMatch:"full", component:PatientComponent},
-    {path:"patients/add",component:PatientAddComponent}
+    {path:"patients/add",component:PatientAddComponent},
+    {path:"patients/update/:patientID",component:PatientUpdateComponent}
     
 ];
 

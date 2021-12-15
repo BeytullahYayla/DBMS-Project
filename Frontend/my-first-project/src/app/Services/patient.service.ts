@@ -17,7 +17,7 @@ export class PatientService {
     return this.httpClient.get<PatientDetail[]>(newPath)
   }
   deletePatient(patientID:number){
-    let newPath=this.apiUrl+"Patient/delete"
+    let newPath=this.apiUrl+"Patient/delete?patientID="+patientID
     return this.httpClient.post(newPath,patientID)
   }
   add(patient:Patient){
@@ -28,6 +28,11 @@ export class PatientService {
   update(patient:Patient){
     let newPath=this.apiUrl+"Patient/updatepatient"
     return this.httpClient.post(newPath,patient);
+  }
+  getByPatientID(patientID:number):Observable<Patient[]>{
+    let newPath=this.apiUrl+"Patient/getbypatientid?patientID="+patientID
+    return this.httpClient.get<Patient[]>(newPath)
+
   }
 
  

@@ -144,6 +144,7 @@ namespace WebAPI.Controllers
                 connection.Open();
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@PatientID", patient.PatientID);
                     command.Parameters.AddWithValue("@VeterinerianID", patient.VeterinerianID);
                     command.Parameters.AddWithValue("@DiagnosisID", patient.DiagnosisID);
                     command.Parameters.AddWithValue("@PatientRoomID", patient.PatientRoomID);

@@ -39,6 +39,11 @@
           <span class="float-start">PetOwnerName</span>
           <span class="float-end">{{ patient.PetOwnerName }}</span>
         </li>
+        <li class="list-group-item">
+          <span class="float-start">Diagnosis Name</span>
+          <span class="float-end">{{ patient.DiagnosisName }}</span>
+        </li>
+
       
       </ul>
       <div class="card-body">
@@ -46,7 +51,8 @@
           <!-- <a type="button" (click)="addToCart(car)" class="btn btn-success">Sepete Ekle</a> -->
           <!-- Button trigger modal -->
   
-          <a class="btn btn-primary w-100">Detaylar</a>
+          <a class="btn btn-warning w-50" routerLink="/patients/update/{{patient.PatientID}}">Update</a>
+          <a class="btn btn-danger w-50"  (click)="deletePatient(patient.PatientID)">Delete</a>
         </div>
       </div>
     </div>

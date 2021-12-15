@@ -1,0 +1,109 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h5 class="title">Update Patient</h5>
+            </div>
+            <div class="card-body">
+               
+                <form [formGroup]="updatePatientForm">
+                    <div *ngFor="let item of patient">
+                   
+                    
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PatientID">PatientID</label>
+                            <input  type="number"  id="PatientID" formControlName="PatientID" class="form-control" placeholder="{{item.PatientID}}">
+                            
+                        </div>
+  
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PatientCategoryID">Patient Category ID</label>
+                            <input  type="number"  id="PatientCategoryID" formControlName="PatientCategoryID" class="form-control" placeholder="{{item.PatientCategoryID}}">
+                            
+                        </div>
+  
+                    </div>
+                     
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="VeterinerianID">Veterinerian ID</label>
+                            <input  type="number"  id="VeterinerianID" formControlName="VeterinerianID" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+               
+                     
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PetOwnerID">Pet Owner ID</label>
+                            <input  type="number"  id="PetOwnerID" formControlName="PetOwnerID" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+
+               
+                     
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="DiagnosisID">Diagnoses ID</label>
+                            <input  type="number"  id="DiagnosisID" formControlName="DiagnosisID" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+                      
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PatientRoomID">Patient Room ID</label>
+                            <input  type="number"  id="PatientRoomID" formControlName="PatientRoomID" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+                   
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PatientName">Patient Name</label>
+                            <input  type="text"  id="PatientName" formControlName="PatientName" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="PatientAge">Patient Age</label>
+                            <input  type="number"  id="PatientAge" formControlName="PatientAge" class="form-control">
+                            
+                        </div>
+  
+                    </div>
+                    
+                  
+                   
+                  
+                   
+                    
+                   
+                    
+                    
+                  
+                    
+                  
+                  
+                </div>
+        
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-success btn-fill" (click)="update()">Update</button>
+            </div>
+        </div>
+        
+       
+    </div>
+  </div>
