@@ -45,7 +45,27 @@ namespace WebAPI.Controllers
             }
             return new JsonResult(table);
         }
-        [HttpGet("getbypatientid")]
+        [HttpGet("getpatientrecords")]
+        public JsonResult GetPatientRecords()
+        {
+            string query = @"select * from patientrecordsdto";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection connection = new NpgsqlConnection(sqlDataSource))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    myReader = command.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    connection.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+            [HttpGet("getbypatientid")]
         public JsonResult GetByPatientID(int patientID)
         {
             string query = @"select * from getpatientbypatientid(@PatientID)";

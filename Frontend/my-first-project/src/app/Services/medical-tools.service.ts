@@ -31,6 +31,11 @@ export class MedicalToolsService {
     let newPath=this.apiUrl+"MedicalTool/addmedicaltool"
     return this.httpClient.post(newPath,medicalTool)
   }
+  search(medicalToolName:string):Observable<MedicalTool[]>{
+    let newPath=this.apiUrl+"MedicalTool/searchbymedicaltoolname?medicalToolName="+medicalToolName
+    return this.httpClient.get<MedicalTool[]>("http://localhost:43082/api/MedicalTool/searchbymedicaltoolname?medicalToolName="+medicalToolName)
+
+  }
 
 
 

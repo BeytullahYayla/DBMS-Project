@@ -147,6 +147,30 @@ namespace WebAPI.Controllers
             return new JsonResult(table);
             
         }
+        [HttpGet("searchbymedicaltoolname")]
+        public JsonResult GetByMedicalToolName(string medicalToolName)
+        {
+            string query = @"select * from medicaltools where ""ToolName""=@medicalToolName";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("VetAppCon");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection connection = new NpgsqlConnection(sqlDataSource))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@medicalToolName",medicalToolName);
+                    myReader = command.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    connection.Close();
+
+                }
+
+            }
+            return new JsonResult(table);
+
+        }
        
 
     }

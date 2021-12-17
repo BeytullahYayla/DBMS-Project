@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { MedicalTool } from 'src/app/Models/medicalTool';
@@ -18,6 +18,7 @@ import { MedicalToolsService } from 'src/app/Services/medical-tools.service';
 export class MedicalToolsComponent implements OnInit {
 
   medicals:MedicalTool[]=[];
+  
 
  
   constructor(private httpClient:HttpClient,
@@ -25,12 +26,21 @@ export class MedicalToolsComponent implements OnInit {
     private formBuilder:FormBuilder,
     private toastrService:ToastrService,
     private router:Router,
-    private location:Location
+    private location:Location,
+    private activatedRoute:ActivatedRoute
     
     
     ) { }
  
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(
+      params=>{
+        if (params["medicalToolName"]) {
+          this.search(params["medicalToolName"])
+          
+        }
+      }
+    )
     this.getAll()
     
   }
@@ -56,6 +66,17 @@ export class MedicalToolsComponent implements OnInit {
         
     )
    
+  }
+  search(medicalToolName:string){
+    this.medicalToolService.search(medicalToolName).subscribe(
+      response=>{
+        this.medicals=response
+        this.toastrService.info("Medical Tool Found")
+      }
+      
+
+    )
+
   }
  
  

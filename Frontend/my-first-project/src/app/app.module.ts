@@ -15,7 +15,8 @@ import { PatientComponent } from './Components/patient/patient.component';
 import { ToastrModule } from 'ngx-toastr';
 import{SidebarComponent} from './Components/sidebar/sidebar.component';
 import { PatientAddComponent } from './Components/patient-add/patient-add.component';
-import { PatientUpdateComponent } from './Components/patient-update/patient-update.component'
+import { PatientUpdateComponent } from './Components/patient-update/patient-update.component';
+import { PatientrecordComponent } from './Components/patientrecord/patientrecord.component'
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PatientUpdateComponent } from './Components/patient-update/patient-upda
     PatientComponent,
     SidebarComponent,
     PatientAddComponent,
-    PatientUpdateComponent
+    PatientUpdateComponent,
+    PatientrecordComponent
     
   ],
   imports: [

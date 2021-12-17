@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Patient } from 'src/app/Models/patient';
 import { PatientDetail } from 'src/app/Models/patientDetail';
 import { PatientService } from 'src/app/Services/patient.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-patient',
@@ -13,7 +14,10 @@ import { PatientService } from 'src/app/Services/patient.service';
 export class PatientComponent implements OnInit {
 
   patients:PatientDetail[]
-  constructor(private patientService:PatientService,private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
+  constructor(private patientService:PatientService,private activatedRoute:ActivatedRoute,private toastrService:ToastrService,
+    private router:Router,
+    private location:Location
+    ) { }
 
 
   ngOnInit(): void {
@@ -29,6 +33,9 @@ export class PatientComponent implements OnInit {
   deletePatient(patientID:number){
     this.patientService.deletePatient(patientID).subscribe(
       response=>{
+        this.router.navigateByUrl("/refresh",{skipLocationChange:true}).then(()=>{
+          this.router.navigate(["patients"])
+        })
         this.toastrService.success("Patient Successfully Deleted")
         
 

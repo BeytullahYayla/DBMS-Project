@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patient } from '../Models/patient';
 import { PatientDetail } from '../Models/patientDetail';
+import { PatientRecords } from '../Models/patientRecords';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,11 @@ export class PatientService {
     return this.httpClient.get<Patient[]>(newPath)
 
   }
+  getPatientRecords():Observable<PatientRecords[]>{
+    let newPath=this.apiUrl+"Patient/getpatientrecords"
+    return this.httpClient.get<PatientRecords[]>(newPath)
+  }
+  
 
  
 }

@@ -1,0 +1,29 @@
+
+  <div class="row">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          
+          <th scope="col">PatientID</th>
+          <th scope="col">PetOwnerIdentityNo</th>
+          <th scope="col">PetOwnerName</th>
+          <th scope="col">PetOwnerTelNo</th>
+          <th scope="col">PetOwnerAdress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of patientRecords">
+            <td>{{item.PatientID}}</td>
+            <td>{{item.PetOwnerIdentityNo}}</td>
+            <td>{{item.PetOwnerName}}</td>
+            <td>{{item.PetOwnerTelNo}}</td>
+            <td>{{item.PetOwnerAdress}}</td>
+           
+             
+           
+            
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
