@@ -22,6 +22,8 @@ export class PatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPatientDetails()
+    
+    
   }
   getPatientDetails(){
     this.patientService.getPatientDetails().subscribe(
@@ -49,5 +51,6 @@ export class PatientComponent implements OnInit {
       }
     )
   }
+
 
 }

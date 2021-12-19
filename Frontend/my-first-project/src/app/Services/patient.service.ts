@@ -39,6 +39,7 @@ export class PatientService {
     let newPath=this.apiUrl+"Patient/getpatientrecords"
     return this.httpClient.get<PatientRecords[]>(newPath)
   }
+ 
   
 
  
